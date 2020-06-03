@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <h1 style="text-align: center">List Book</h1>
-        <form  role="form" action="{{url("/book/search")}}" method="post"  >
+        <form  role="form" action="{{url("/book/search")}}" method="POST"  >
             @method("POST")
             @csrf
             <div class="form-group" style="width: 30%">

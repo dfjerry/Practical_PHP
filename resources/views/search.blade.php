@@ -23,7 +23,7 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($array as $a)
+        @foreach($book1 as $book)
             <tr>
                 <th scope="row">{{$book->__get("id")}}</th>
                 <td>{{$book->__get("title")}}</td>

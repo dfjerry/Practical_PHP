@@ -20,6 +20,7 @@
                 <button class="btn btn-dark">Search</button>
             </div>
         </form>
+        <a href="{{url('/book/new-book')}}" class="btn btn-outline-dark">New Book</a>
         <table class="table">
             <thead class="thead-light">
             <tr>
@@ -29,6 +30,8 @@
                 <th scope="col">Available</th>
                 <th scope="col">ISBN</th>
                 <th scope="col">Publishing Year</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -40,6 +43,17 @@
                     <td>{{$book->__get("available")}}</td>
                     <td>{{$book->__get("ISBN")}}</td>
                     <td>{{$book->__get("pub_year")}}</td>
+                    <td>
+                        <a href="{{url("/book/edit-book/{$book->__get("id")}")}}" class="btn btn-outline-dark">Edit</a>
+                    </td>
+                    <td>
+                        <form action="{{url("/book/delete-book/{$book->__get("id")}")}}" method="post">
+                            @method("DELETE")
+                            @csrf
+                            {{--                            nếu ko có @csrf tạo mã token sẽ bị lỗi 419--}}
+                            <button type="submit" onclick="return confirm('Are you sure?');" class="btn btn-outline-dark">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
